@@ -94,7 +94,7 @@ cgroup.sane_behavior   cpuset.effective_cpus  cpuset.mem_hardwall    cpuset.memo
 
 - Important Notes: 
     - tasks: we can see every task running on the system (root cgroup)
-    - cpuset.cpus: we can see all cpus (root cgroop)
+    - cpuset.cpus: we can see all cpus (root cgroup)
 
 - Find docker cgroup in cpuset hierarchy
 ```
@@ -130,7 +130,7 @@ Output:
 ```
 Verify it is container's PID by killing it.. The container exits xD
 
-- Finding cpu affinity
+### Tunning cpu affinity
     1. taskset-way `< taskset -cap 11274>`
     2. cgroups-way `< cat cpuset.cpus >`
 
