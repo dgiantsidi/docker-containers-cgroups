@@ -83,6 +83,7 @@ cd /sys/fs/cgroup/cpuset
 ls
 ```
 
+Output:
 ```
 demy@demy-VirtualBox:/sys/fs/cgroup/cpuset$ ls
 cgroup.clone_children  cpuset.cpu_exclusive   cpuset.effective_mems  cpuset.memory_migrate           cpuset.memory_spread_page  cpuset.sched_load_balance        notify_on_release
@@ -90,3 +91,55 @@ cgroup.procs           cpuset.cpus            cpuset.mem_exclusive   cpuset.memo
 cgroup.sane_behavior   cpuset.effective_cpus  cpuset.mem_hardwall    cpuset.memory_pressure_enabled  cpuset.mems                docker                           tasks
 
 ```
+
+- Important Notes: 
+    - tasks: we can see every task running on the system (root cgroup)
+    - cpuset.cpus: we can see all cpus (root cgroop)
+
+- Find docker cgroup in cpuset hierarchy
+```
+cd docker
+ls
+```
+
+Output:
+```
+(none)
+```
+
+```
+cd /fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+ls
+```
+
+Output:
+```
+cgroup.clone_children  cpuset.cpus            cpuset.mem_exclusive   cpuset.memory_pressure     cpuset.mems                      notify_on_release
+cgroup.procs           cpuset.effective_cpus  cpuset.mem_hardwall    cpuset.memory_spread_page  cpuset.sched_load_balance        tasks
+cpuset.cpu_exclusive   cpuset.effective_mems  cpuset.memory_migrate  cpuset.memory_spread_slab  cpuset.sched_relax_domain_level
+```
+
+- In file tasks there is only one pid, the PID of the container
+```
+cat tasks
+```
+
+Output:
+```
+11274
+```
+Verify it is container's PID by killing it.. The container exits xD
+
+- Finding cpu affinity
+    1. taskset-way `< taskset -cap 11274>`
+    2. cgroups-way `< cat cpuset.cpus >`
+
+- Can we change affinity with taskset ?
+    - `< taskset >` command will be filtered out by cpuset.cpus and if the new mask is not included in cpuset.cpus then the `< taskset >` will be ignored or fail
+    - example#1: `< taskset -c 2 11274 >` will success and the affinity will change as we can see by '< cat /proc/self/status | grep Cpus_allowed >' inside the container
+    - example#2: `< sudo vim cpuset.cpus >` 0-3 -> 2-3 and then `< taskset -cap 0 11274 >` ``` pid 11274's current affinity list: 2
+    taskset: failed to set pid 11274's affinity: Invalid argument```
+    - example#3: current container cpu affinity let be 2-3 and we  `< taskset -cap 0-2 11274 >`.. the new affinity will be ```pid 11274's current affinity list: 2,3
+    pid 11274's new affinity list: 2
+    ```
+
