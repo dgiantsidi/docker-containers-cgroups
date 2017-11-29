@@ -59,6 +59,21 @@ cat /proc/self/cgroups
 Output:
 ```
 /docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+
+
+
+11:blkio:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+10:pids:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+9:hugetlb:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+8:perf_event:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+7:freezer:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+6:cpuset:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+5:devices:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+4:memory:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+3:net_cls,net_prio:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+2:cpu,cpuacct:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+1:name=systemd:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+
 ```
 
 
