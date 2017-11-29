@@ -29,3 +29,36 @@ sudo docker pull <image-name>
 ```
 sudo docker pull ubuntu
 ```
+
+- Deploy a docker (--rm flag deletes container image after exiting)
+```
+docker run --rm --name test-cgroups -it ubuntu
+```
+
+## Step 2: Find the cgroup attached to each container
+
+- "Inside" the docker we can retrieve cpu affinity and number of processors on which the container is pinned
+```
+nproc
+cat /proc/self/status | grep Cpus_allowed
+```
+
+Output: 
+```
+Cpus_allowed:f
+Cpus_allowed_list:0-3
+        
+```
+
+- We can also find all cgroups this container is attached to
+```
+cat /proc/self/cpusets
+cat /proc/self/cgroups
+```
+
+Output:
+```
+/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
+```
+
+
