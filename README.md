@@ -76,6 +76,8 @@ Output:
 
 ```
 
+- Each time we deploy a docker container a cgroup for this container will be created. Exiting the container the cgroup will be removed as well
+
 - We can verify the information above in host machine too
 
 ```
