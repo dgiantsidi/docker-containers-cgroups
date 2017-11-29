@@ -136,10 +136,10 @@ Verify it is container's PID by killing it.. The container exits xD
 
 - Can we change affinity with taskset ?
     - `< taskset >` command will be filtered out by cpuset.cpus and if the new mask is not included in cpuset.cpus then the `< taskset >` will be ignored or fail
-    - example#1: `< taskset -c 2 11274 >` will success and the affinity will change as we can see by '< cat /proc/self/status | grep Cpus_allowed >' inside the container
+    - example#1: `< taskset -cap 2 11274 >` will success and the affinity will change as we can see by '< cat /proc/self/status | grep Cpus_allowed >' inside the container
     - example#2: `< sudo vim cpuset.cpus >` 0-3 -> 2-3 and then `< taskset -cap 0 11274 >` ``` pid 11274's current affinity list: 2
     taskset: failed to set pid 11274's affinity: Invalid argument```
-    - example#3: current container cpu affinity let be 2-3 and we  `< taskset -cap 0-2 11274 >`.. the new affinity will be ```pid 11274's current affinity list: 2,3
-    pid 11274's new affinity list: 2
-    ```
+    - example#3: current container cpu affinity let be 2-3 and we  `< taskset -cap 0-2 11274 >`
+        the new affinity will be ```pid 11274's current affinity list: 2,3
+                                    pid 11274's new affinity list: 2```
 
