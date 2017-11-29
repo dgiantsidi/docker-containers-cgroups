@@ -76,4 +76,17 @@ Output:
 
 ```
 
+- We can verify the information above in host machine too
 
+```
+cd /sys/fs/cgroup/cpuset
+ls
+```
+
+```
+demy@demy-VirtualBox:/sys/fs/cgroup/cpuset$ ls
+cgroup.clone_children  cpuset.cpu_exclusive   cpuset.effective_mems  cpuset.memory_migrate           cpuset.memory_spread_page  cpuset.sched_load_balance        notify_on_release
+cgroup.procs           cpuset.cpus            cpuset.mem_exclusive   cpuset.memory_pressure          cpuset.memory_spread_slab  cpuset.sched_relax_domain_level  release_agent
+cgroup.sane_behavior   cpuset.effective_cpus  cpuset.mem_hardwall    cpuset.memory_pressure_enabled  cpuset.mems                docker                           tasks
+
+```
