@@ -43,8 +43,9 @@ nproc
 cat /proc/self/status | grep Cpus_allowed
 ```
 
-Output: 
+
 ```
+Output: 
 Cpus_allowed:f
 Cpus_allowed_list:0-3
         
@@ -56,11 +57,11 @@ cat /proc/self/cpusets
 cat /proc/self/cgroups
 ```
 
-Output:
+
 ```
+Output:
+
 /docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
-
-
 
 11:blkio:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
 10:pids:/docker/fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
@@ -85,8 +86,8 @@ cd /sys/fs/cgroup/cpuset
 ls
 ```
 
-Output:
 ```
+Output:
 demy@demy-VirtualBox:/sys/fs/cgroup/cpuset$ ls
 cgroup.clone_children  cpuset.cpu_exclusive   cpuset.effective_mems  cpuset.memory_migrate           cpuset.memory_spread_page  cpuset.sched_load_balance        notify_on_release
 cgroup.procs           cpuset.cpus            cpuset.mem_exclusive   cpuset.memory_pressure          cpuset.memory_spread_slab  cpuset.sched_relax_domain_level  release_agent
@@ -104,8 +105,8 @@ cd docker
 ls
 ```
 
-Output:
 ```
+Output:
 (none)
 ```
 
@@ -114,8 +115,8 @@ cd /fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
 ls
 ```
 
-Output:
 ```
+Output:
 cgroup.clone_children  cpuset.cpus            cpuset.mem_exclusive   cpuset.memory_pressure     cpuset.mems                      notify_on_release
 cgroup.procs           cpuset.effective_cpus  cpuset.mem_hardwall    cpuset.memory_spread_page  cpuset.sched_load_balance        tasks
 cpuset.cpu_exclusive   cpuset.effective_mems  cpuset.memory_migrate  cpuset.memory_spread_slab  cpuset.sched_relax_domain_level
@@ -126,8 +127,8 @@ cpuset.cpu_exclusive   cpuset.effective_mems  cpuset.memory_migrate  cpuset.memo
 cat tasks
 ```
 
-Output:
 ```
+Output:
 11274
 ```
 Verify it is container's PID by killing it.. The container exits xD
