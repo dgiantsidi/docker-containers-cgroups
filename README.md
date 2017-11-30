@@ -107,7 +107,9 @@ ls
 
 ```
 Output:
-(none)
+cgroup.clone_children  cpuset.cpus            cpuset.mem_exclusive   cpuset.memory_pressure     cpuset.mems                      notify_on_release
+cgroup.procs           cpuset.effective_cpus  cpuset.mem_hardwall    cpuset.memory_spread_page  cpuset.sched_load_balance        tasks
+cpuset.cpu_exclusive   cpuset.effective_mems  cpuset.memory_migrate  cpuset.memory_spread_slab  cpuset.sched_relax_domain_level fe558ff7ba29d59c8ff1708546ad6f1bd07c6cf34a64768b2242ea63478be73f
 ```
 
 ```
@@ -133,7 +135,7 @@ Output:
 ```
 Verify it is container's PID by killing it.. The container exits xD
 
-### Tunning cpu affinity
+## Step 3: Tune cpu affinity
     1. taskset-way `< taskset -cap 11274>`
     2. cgroups-way `< cat cpuset.cpus >`
 
