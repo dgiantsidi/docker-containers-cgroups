@@ -1,4 +1,4 @@
-# cgroups-and-containers
+# Cgroups: Docker Containers
 
 ## Step 1: Starting with docker containers
 
